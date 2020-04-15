@@ -15,12 +15,8 @@ class SVGElement {
 
     append(element){
 
-        if (typeof (element) === 'string' ) {
-            document.querySelector(element);
-        }else{
-            const parent = element.node;
-            parent.append(this.node);
-        }
+        const parent = (typeof (element) === 'string' )? document.querySelector(element):element.node;
+        parent.appendChild(this.node);
         return this;
     }
 }
@@ -37,7 +33,6 @@ class Sight{
     }
 
     draw (type, attrs){
-
         return new SVGElement(type).attr(attrs).append(this.svg);
     }
 }
